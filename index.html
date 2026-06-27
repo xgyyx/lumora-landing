@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>朗曜 Lumora · 兽医影像云平台</title>
+  <meta name="description" content="朗曜映微，洞察入幽。面向中国兽医诊所的影像云 PACS + 远程判读双主线平台，让影像在云端集中托管，让疑难病例触达资深判读专家。" />
+  <meta name="keywords" content="兽医影像, 云 PACS, 远程判读, DICOM, 朗曜, Lumora, 兽医诊所, 阅片" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="朗曜 Lumora · 兽医影像云平台" />
+  <meta property="og:description" content="朗曜映微，洞察入幽。云 PACS + 远程判读双主线，为中国兽医诊所而生。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_CN" />
+  <!-- og:image 等 og-image.jpg 就位后启用：
+  <meta property="og:image" content="./assets/og-image.jpg" />
+  -->
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 字体：Inter 西文 + Noto Serif SC 中文衬线（品牌定义 §4 偏宋/衡山，Noto Serif SC 是免费近似） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- 品牌色 + 字体栈 + 微妙效果 -->
+  <style>
+    :root {
+      --brand-navy:   #0A1628;
+      --brand-teal:   #0F2A3D;
+      --brand-deep:   #050B14;
+      --brand-silver: #94A3B8;
+      --brand-mist:   #CBD5E1;
+      --brand-gold:   #E8C988;
+      --brand-gold-soft: rgba(232, 201, 136, 0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background-color: var(--brand-navy);
+      color: #F8FAFC;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* 中文衬线（slogan / 大标题） */
+    .font-serif-sc {
+      font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+      font-feature-settings: "palt" 1;
+    }
+
+    /* Hero 渐变占位：模拟「一束暖光照入幽暗」
+       AI 图就绪后只需把下面这段 background 改为：
+         background-image: url('./assets/hero-bg.webp');
+         background-size: cover;
+         background-position: center;
+    */
+    .hero-gradient {
+      background:
+        radial-gradient(ellipse at 30% 15%, rgba(232, 201, 136, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 75% 80%, rgba(15, 42, 61, 0.6) 0%, transparent 50%),
+        linear-gradient(160deg, #0A1628 0%, #0F2A3D 55%, #050B14 100%);
+    }
+
+    /* 微妙噪点（提供"画面颗粒感"模拟暗房氛围，可选） */
+    .hero-gradient::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.4;
+      background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+      mix-blend-mode: overlay;
+    }
+
+    /* 分隔线 */
+    .hr-gold {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(232, 201, 136, 0.3), transparent);
+    }
+
+    /* 卡片基线 */
+    .brand-card {
+      background: rgba(15, 42, 61, 0.4);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      backdrop-filter: blur(8px);
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .brand-card:hover {
+      border-color: rgba(232, 201, 136, 0.35);
+      transform: translateY(-2px);
+    }
+
+    /* CTA 按钮 */
+    .btn-primary {
+      background: linear-gradient(135deg, #E8C988 0%, #D4B574 100%);
+      color: #0A1628;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px -10px rgba(232, 201, 136, 0.4);
+    }
+    .btn-ghost {
+      border: 1px solid rgba(232, 201, 136, 0.4);
+      color: #E8C988;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-ghost:hover {
+      background: rgba(232, 201, 136, 0.08);
+      border-color: rgba(232, 201, 136, 0.7);
+    }
+
+    /* 数字大号 */
+    .num-display {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+  <!-- ╔════════════════════════════════════════════════════════╗ -->
+  <!-- ║ 导航条                                                 ║ -->
+  <!-- ╚════════════════════════════════════════════════════════╝ -->
+  <nav class="fixed top-0 inset-x-0 z-50 px-6 md:px-12 py-5 backdrop-blur-md bg-[#0A1628]/70 border-b border-white/5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="#top" class="flex items-baseline gap-2 group">
+        <span class="font-serif-sc text-xl md:text-2xl font-semibold text-white tracking-wide">朗曜</span>
+        <span class="text-sm md:text-base font-medium text-[var(--brand-gold)] tracking-widest">Lumora</span>
+      </a>
+      <div class="flex items-center gap-3 md:gap-6">
+        <a href="#vision"    class="hidden md:inline text-sm text-[var(--brand-mist)] hover:text-white transition">理念</a>
+        <a href="#dual-line" class="hidden md:inline text-sm text-[var(--brand-mist)] hover:text-white transition">双主线</a>
+        <a href="#features"  class="hidden md:inline text-sm text-[var(--brand-mist)] hover:text-white transition">核心特性</a>
+        <a href="#"          class="text-sm px-4 py-2 btn-ghost rounded-lg">登录</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ╔════════════════════════════════════════════════════════╗ -->
+  <!-- ║ Hero                                                   ║ -->
+  <!-- ╚════════════════════════════════════════════════════════╝ -->
+  <section id="top" class="relative hero-gradient min-h-[88vh] flex items-center px-6 md:px-12 pt-20">
+    <div class="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7 max-w-3xl">
+        <p class="text-sm md:text-base text-[var(--brand-gold)] tracking-[0.3em] mb-6 uppercase">VETERINARY IMAGING CLOUD</p>
+
+        <h1 class="font-serif-sc text-5xl md:text-7xl lg:text-[5.5rem] font-semibold leading-[1.1] text-white">
+          朗曜映微<span class="text-[var(--brand-gold)]"> · </span>洞察入幽
+        </h1>
+
+        <p class="mt-8 text-xl md:text-2xl font-serif-sc text-[var(--brand-mist)] leading-relaxed">
+          面向中国兽医诊所的影像云平台
+        </p>
+
+        <p class="mt-6 text-base md:text-lg text-[var(--brand-silver)] leading-relaxed max-w-2xl">
+          云端集中托管 DICOM 影像，日常 2D 阅片随时回看；疑难病例一键交付资深判读专家，<br class="hidden md:block" />
+          专业中文诊断报告闭环交付。
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+          <a href="#cta" class="inline-flex items-center justify-center px-8 py-3.5 btn-primary rounded-lg font-semibold text-sm tracking-wide">
+            申请体验
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
+          <a href="#" class="inline-flex items-center justify-center px-8 py-3.5 btn-ghost rounded-lg font-semibold text-sm tracking-wide">
+            已有账号 · 登录
+          </a>
+        </div>
+      </div>
+
+      <!-- 右侧装饰：抽象「光照入幽」几何 -->
+      <div class="lg:col-span-5 hidden lg:flex justify-center items-center">
+        <div class="relative w-full max-w-md aspect-square">
+          <!-- 光晕环 -->
+          <div class="absolute inset-0 rounded-full" style="background: radial-gradient(circle at center, rgba(232,201,136,0.18) 0%, transparent 60%);"></div>
+          <!-- 同心圆 -->
+          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 400" fill="none">
+            <circle cx="200" cy="200" r="180" stroke="rgba(232,201,136,0.15)" stroke-width="1"/>
+            <circle cx="200" cy="200" r="140" stroke="rgba(232,201,136,0.2)" stroke-width="1"/>
+            <circle cx="200" cy="200" r="100" stroke="rgba(232,201,136,0.28)" stroke-width="1"/>
+            <circle cx="200" cy="200" r="60"  stroke="rgba(232,201,136,0.4)"  stroke-width="1"/>
+            <!-- 中心光点 -->
+            <circle cx="200" cy="200" r="6" fill="#E8C988"/>
+            <circle cx="200" cy="200" r="18" fill="rgba(232,201,136,0.3)"/>
+            <!-- 十字准线 -->
+            <line x1="200" y1="0" x2="200" y2="400" stroke="rgba(232,201,136,0.08)" stroke-width="1" stroke-dasharray="2 8"/>
+            <line x1="0" y1="200" x2="400" y2="200" stroke="rgba(232,201,136,0.08)" stroke-width="1" stroke-dasharray="2 8"/>
+          </svg>
+          <!-- 大字「曜」做画面锚点 -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="font-serif-sc text-[10rem] font-bold text-white/[0.04] select-none">曜</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 向下滚提示 -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-[var(--brand-silver)] animate-pulse">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ╔════════════════════════════════════════════════════════╗ -->
+  <!-- ║ ❶ 核心理念                                              ║ -->
+  <!-- ╚════════════════════════════════════════════════════════╝ -->
+  <section id="vision" class="py-24 md:py-32 px-6 md:px-12 bg-[var(--brand-deep)]">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-xs text-[var(--brand-gold)] tracking-[0.4em] uppercase mb-6">PHILOSOPHY</p>
+      <h2 class="font-serif-sc text-3xl md:text-5xl font-semibold leading-tight text-white">
+        映微入幽，<br />让影像之光洞穿病理
+      </h2>
+      <div class="hr-gold w-32 mx-auto my-12"></div>
+      <p class="text-lg md:text-xl text-[var(--brand-mist)] leading-loose font-serif-sc">
+        「朗」者清朗通透，「曜」者日月星辰之光。<br />
+        我们相信，每一张影像都是给疾病显形的一束光——
+        让小型诊所也能拥有专业的影像托管基础设施，
+        让每一个疑难病例都能触达资深判读的洞察。
+      </p>
+      <p class="mt-8 text-base text-[var(--brand-silver)] leading-relaxed max-w-2xl mx-auto">
+        在朗曜，影像不再散落于 U 盘和网盘；判读不再依赖微信群和邮件附件。<br class="hidden md:block" />
+        从上传到归档，从浏览到判读——一条完整、稳定、专业的闭环。
+      </p>
+    </div>
+  </section>
+
+  <!-- ╔════════════════════════════════════════════════════════╗ -->
+  <!-- ║ ❷ 双主线产品架构                                        ║ -->
+  <!-- ╚════════════════════════════════════════════════════════╝ -->
+  <section id="dual-line" class="py-24 md:py-32 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-xs text-[var(--brand-gold)] tracking-[0.4em] uppercase mb-4">PRODUCT ARCHITECTURE</p>
+        <h2 class="font-serif-sc text-3xl md:text-5xl font-semibold text-white">双主线，一站式</h2>
+        <p class="mt-4 text-[var(--brand-silver)] max-w-2xl mx-auto">影像基础设施与专家判读服务并行，互为流量与价值的双向通道。</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- 云 PACS -->
+        <div class="brand-card rounded-2xl p-8 md:p-10">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background: rgba(232, 201, 136, 0.12);">
+              <svg class="w-6 h-6 text-[var(--brand-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-[var(--brand-gold)] tracking-widest uppercase">主线一</p>
+              <h3 class="font-serif-sc text-2xl md:text-3xl font-semibold text-white">云 PACS</h3>
+            </div>
+          </div>
+          <p class="text-[var(--brand-mist)] text-lg mb-6 leading-relaxed">影像基础设施 · 订阅日常使用</p>
+          <ul class="space-y-3 text-[var(--brand-silver)]">
+            <li class="flex gap-3">
+              <span class="text-[var(--brand-gold)] mt-1.5">▪</span>
+              <span>替代 U 盘、网盘的散落式管理，影像云端集中托管</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[var(--brand-gold)] mt-1.5">▪</span>
+              <span>按宠物、检查日期、模态浏览，历史病例随时回看</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[var(--brand-gold)] mt-1.5">▪</span>
+              <span>浏览器内 2D 阅片，调窗、测量、Cine 播放即开即用</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[var(--brand-gold)] mt-1.5">▪</span>
+              <span>长期保留，影像永不丢失</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 远程判读 -->
+        <div class="brand-card rounded-2xl p-8 md:p-10">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background: rgba(232, 201, 136, 0.12);">
+              <svg class="w-6 h-6 text-[var(--brand-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-[var(--brand-gold)] tracking-widest uppercase">主线二</p>
+              <h3 class="font-serif-sc text-2xl md:text-3xl font-semibold text-white">远程判读</h3>
+            </div>
+          </div>
+          <p class="text-[var(--brand-mist)] text-lg mb-6 leading-relaxed">专家服务 · 按单付费</p>
+          <ul class="space-y-3 text-[var(--brand-silver)]">
+            <li class="flex gap-3">
+              <span class="text-[var(--brand-gold)] mt-1.5">▪</span>
+              <span>资深兽医教授判读，专业中文诊断报告</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[var(--brand-gold)] mt-1.5">▪</span>
+              <span>结构化报告：所见 · 印象 · 建议三段式</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[var(--brand-gold)] mt-1.5">▪</span>
+              <span>核心片高亮，关键证据自动嵌入报告</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-[var(--brand-gold)] mt-1.5">▪</span>
+              <span>在线查看 + PDF 下载，宠主端可分享</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-center mt-12 text-[var(--brand-silver)] text-sm max-w-3xl mx-auto">
+        <span class="text-[var(--brand-gold)]">◇</span>
+        两条主线共用同一账号、同一影像库、同一权限基线。订阅 PACS 客户可从影像直接发起判读订单；单次付费客户体验后可随时升级，<span class="text-[var(--brand-mist)]">历史影像自动并入影像库</span>。
+      </p>
+    </div>
+  </section>
+
+  <!-- ╔════════════════════════════════════════════════════════╗ -->
+  <!-- ║ ❸ 核心特性                                              ║ -->
+  <!-- ╚════════════════════════════════════════════════════════╝ -->
+  <section id="features" class="py-24 md:py-32 px-6 md:px-12 bg-[var(--brand-deep)]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-xs text-[var(--brand-gold)] tracking-[0.4em] uppercase mb-4">CORE CAPABILITIES</p>
+        <h2 class="font-serif-sc text-3xl md:text-5xl font-semibold text-white">核心特性</h2>
+        <p class="mt-4 text-[var(--brand-silver)] max-w-2xl mx-auto">从上传到判读，从浏览到归档——每一处都为兽医诊所的真实场景打磨。</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 特性 1：DICOM 上传 -->
+        <div class="brand-card rounded-xl p-6 md:p-7">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background: rgba(232, 201, 136, 0.1);">
+            <svg class="w-5 h-5 text-[var(--brand-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+            </svg>
+          </div>
+          <h3 class="font-serif-sc text-xl font-semibold text-white mb-3">全功能 Web 上传器</h3>
+          <p class="text-sm text-[var(--brand-silver)] leading-relaxed">拖拽整个文件夹，自动识别 DICOM；断点续传，进度可见；按 Study / Series 自动归类，无需手动整理。</p>
+        </div>
+
+        <!-- 特性 2：2D 阅片器 -->
+        <div class="brand-card rounded-xl p-6 md:p-7">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background: rgba(232, 201, 136, 0.1);">
+            <svg class="w-5 h-5 text-[var(--brand-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif-sc text-xl font-semibold text-white mb-3">浏览器内 2D 阅片</h3>
+          <p class="text-sm text-[var(--brand-silver)] leading-relaxed">调窗预设（肺窗 / 骨窗 / 软组织）、缩放平移、距离角度测量、多帧 Cine 播放——无需安装任何客户端。</p>
+        </div>
+
+        <!-- 特性 3：MPR 三视图 -->
+        <div class="brand-card rounded-xl p-6 md:p-7">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background: rgba(232, 201, 136, 0.1);">
+            <svg class="w-5 h-5 text-[var(--brand-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+            </svg>
+          </div>
+          <h3 class="font-serif-sc text-xl font-semibold text-white mb-3">MPR 三视图重建</h3>
+          <p class="text-sm text-[var(--brand-silver)] leading-relaxed">专家工作台原生支持轴位 / 冠状位 / 矢状位三视图联动，CT 与 MRI 的细节定位一气呵成。</p>
+        </div>
+
+        <!-- 特性 4：结构化报告 -->
+        <div class="brand-card rounded-xl p-6 md:p-7">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background: rgba(232, 201, 136, 0.1);">
+            <svg class="w-5 h-5 text-[var(--brand-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif-sc text-xl font-semibold text-white mb-3">结构化诊断报告</h3>
+          <p class="text-sm text-[var(--brand-silver)] leading-relaxed">按部位 × 模态预设模板，「所见 / 印象 / 建议」三段式填空，核心片自动嵌入，PDF 一键导出。</p>
+        </div>
+
+        <!-- 特性 5：长期保留 -->
+        <div class="brand-card rounded-xl p-6 md:p-7">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background: rgba(232, 201, 136, 0.1);">
+            <svg class="w-5 h-5 text-[var(--brand-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif-sc text-xl font-semibold text-white mb-3">影像长期保留</h3>
+          <p class="text-sm text-[var(--brand-silver)] leading-relaxed">所有客户的 DICOM 影像长期归档，即便单次付费也不丢失；订阅 PACS 时历史影像自动并入影像库。</p>
+        </div>
+
+        <!-- 特性 6：一键判读 -->
+        <div class="brand-card rounded-xl p-6 md:p-7">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background: rgba(232, 201, 136, 0.1);">
+            <svg class="w-5 h-5 text-[var(--brand-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif-sc text-xl font-semibold text-white mb-3">一键发起判读</h3>
+          <p class="text-sm text-[var(--brand-silver)] leading-relaxed">日常浏览遇到疑难病例，从 Study 一键发起判读订单——影像无需再上传，专家自动接收。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ╔════════════════════════════════════════════════════════╗ -->
+  <!-- ║ ❹ 目标客户                                              ║ -->
+  <!-- ╚════════════════════════════════════════════════════════╝ -->
+  <section class="py-24 md:py-32 px-6 md:px-12">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-xs text-[var(--brand-gold)] tracking-[0.4em] uppercase mb-6">WHO IT'S FOR</p>
+      <h2 class="font-serif-sc text-3xl md:text-5xl font-semibold leading-tight text-white">
+        为小型兽医诊所而生
+      </h2>
+      <div class="hr-gold w-32 mx-auto my-12"></div>
+      <p class="text-lg md:text-xl text-[var(--brand-mist)] leading-loose font-serif-sc">
+        如果你的诊所有 1–2 台影像设备、没有独立影像科室，<br />
+        如果你的影像还在 U 盘、网盘和本地硬盘之间漂泊，<br />
+        如果你曾因为找不到一年前的检查结果而尴尬——<br />
+        朗曜正是为此而来。
+      </p>
+
+      <div class="mt-16 grid grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto">
+        <div class="brand-card rounded-xl p-5 md:p-7">
+          <p class="num-display text-3xl md:text-5xl font-serif-sc font-semibold text-[var(--brand-gold)]">CT</p>
+          <p class="text-xs md:text-sm text-[var(--brand-silver)] mt-2 tracking-wide">支持模态</p>
+        </div>
+        <div class="brand-card rounded-xl p-5 md:p-7">
+          <p class="num-display text-3xl md:text-5xl font-serif-sc font-semibold text-[var(--brand-gold)]">MRI</p>
+          <p class="text-xs md:text-sm text-[var(--brand-silver)] mt-2 tracking-wide">支持模态</p>
+        </div>
+        <div class="brand-card rounded-xl p-5 md:p-7">
+          <p class="num-display text-3xl md:text-5xl font-serif-sc font-semibold text-[var(--brand-gold)]">X 光</p>
+          <p class="text-xs md:text-sm text-[var(--brand-silver)] mt-2 tracking-wide">CR / DR</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ╔════════════════════════════════════════════════════════╗ -->
+  <!-- ║ ❺ CTA Banner                                            ║ -->
+  <!-- ╚════════════════════════════════════════════════════════╝ -->
+  <section id="cta" class="relative px-6 md:px-12 py-20 md:py-28 bg-gradient-to-br from-[var(--brand-teal)] via-[var(--brand-navy)] to-[var(--brand-deep)]">
+    <div class="absolute inset-0 opacity-30" style="background: radial-gradient(ellipse at center, rgba(232, 201, 136, 0.2) 0%, transparent 60%);"></div>
+    <div class="relative max-w-4xl mx-auto text-center">
+      <h2 class="font-serif-sc text-3xl md:text-5xl font-semibold text-white leading-tight">
+        让影像之光<br class="md:hidden"/>洞穿病理之微
+      </h2>
+      <p class="mt-6 text-lg text-[var(--brand-mist)] max-w-2xl mx-auto">
+        加入定向邀请客户名单，获取 MVP 阶段早期体验与协议价。
+      </p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="mailto:hello@lumora.example" class="inline-flex items-center justify-center px-8 py-3.5 btn-primary rounded-lg font-semibold text-sm tracking-wide">
+          申请体验
+        </a>
+        <a href="#" class="inline-flex items-center justify-center px-8 py-3.5 btn-ghost rounded-lg font-semibold text-sm tracking-wide">
+          已有账号 · 登录
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ╔════════════════════════════════════════════════════════╗ -->
+  <!-- ║ Footer                                                 ║ -->
+  <!-- ╚════════════════════════════════════════════════════════╝ -->
+  <footer class="px-6 md:px-12 py-12 border-t border-white/5 bg-[var(--brand-deep)]">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
+      <div>
+        <div class="flex items-baseline gap-2">
+          <span class="font-serif-sc text-2xl font-semibold text-white tracking-wide">朗曜</span>
+          <span class="text-base font-medium text-[var(--brand-gold)] tracking-widest">Lumora</span>
+        </div>
+        <p class="mt-2 text-sm text-[var(--brand-silver)] font-serif-sc">朗曜映微 · 洞察入幽</p>
+        <p class="mt-1 text-xs text-[var(--brand-silver)]/70">面向中国兽医诊所的影像云平台</p>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-6 md:gap-12 text-sm text-[var(--brand-silver)]">
+        <div>
+          <p class="text-xs text-white/40 mb-2 tracking-wider uppercase">联系</p>
+          <p>邮箱占位 · hello@lumora.example</p>
+          <p class="mt-1">公众号占位 · 朗曜兽医影像</p>
+        </div>
+        <div>
+          <p class="text-xs text-white/40 mb-2 tracking-wider uppercase">备案</p>
+          <p>ICP 备案号占位</p>
+          <p class="mt-1">公网安备号占位</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hr-gold mt-12 mb-6"></div>
+
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[var(--brand-silver)]/60">
+      <p>© 2026 朗曜 Lumora · All rights reserved.</p>
+      <p>本页面为产品 MVP 阶段品牌落地页，部分功能与定价以正式上线为准。</p>
+    </div>
+  </footer>
+
+</body>
+</html>
