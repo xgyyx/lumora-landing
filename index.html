@@ -15,10 +15,16 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="zh_CN" />
 
-  <!-- 字体：Google Sans 优先，公网 fallback 到 Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet" />
+  <!-- 字体：Roboto Flex 自托管（Apache 2.0），运行时零 Google CDN 依赖（DL.4） -->
+  <style>
+    @font-face {
+      font-family: 'Roboto Flex';
+      font-style: normal;
+      font-display: swap;
+      font-weight: 100 1000; /* 可变字体，单文件覆盖全字重 */
+      src: url('./assets/fonts/RobotoFlex.woff2') format('woff2');
+    }
+  </style>
 
   <!-- Design tokens（按 Antigravity 视觉 UI 规范） -->
   <style>
@@ -59,9 +65,9 @@
       --outline-inverse:         rgba(255, 255, 255, 0.16);
 
       /* ─── Typography ───────────────────────────────────────── */
-      --font-sans: 'Google Sans Flex', 'Google Sans Text', 'Google Sans',
-                   'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC',
-                   'Hiragino Sans GB', 'Microsoft YaHei', system-ui, sans-serif;
+      --font-sans: 'Roboto Flex', 'Roboto', -apple-system, BlinkMacSystemFont,
+                   'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+                   system-ui, sans-serif;
 
       --text-landing-main: 107px;
       --text-9xl: 148px;
