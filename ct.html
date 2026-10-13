@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>CT Sample Cases · LUMORA</title>
+  <meta name="description" content="Sample CT cases interpreted by LUMORA's certified veterinary imaging specialists, including 3D reconstructions." />
+
+  <link rel="stylesheet" href="./assets/site.css" />
+</head>
+
+<body>
+
+  <!-- ══════════════════════ NAV ══════════════════════ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="./index.html" class="brand" aria-label="LUMORA home">
+        <img src="./assets/logo.png" alt="LUMORA" class="brand-logo" />
+      </a>
+      <div class="nav-links">
+        <a href="./index.html" class="nav-link">Home</a>
+        <a href="./about.html" class="nav-link">About us</a>
+        <a href="./x-ray.html" class="nav-link">X-ray</a>
+        <a href="./ct.html" class="nav-link active">CT</a>
+        <a href="./mri.html" class="nav-link">MRI</a>
+        <a href="./contact.html" class="nav-link">Contact us</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="./index.html">Home</a>
+      <a href="./about.html">About us</a>
+      <a href="./x-ray.html">X-ray</a>
+      <a href="./ct.html" class="active">CT</a>
+      <a href="./mri.html">MRI</a>
+      <a href="./contact.html">Contact us</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════ PAGE HERO ══════════════════════ -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow eyebrow-accent">CT</span>
+      <h1>Sample CT cases</h1>
+      <p>
+        Cross-sectional CT with multiplanar and 3D reconstructions, interpreted for complex and
+        referral cases.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ GALLERY ══════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="gallery">
+
+        <!-- Cat · head CT -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">CT</span>
+            <img src="./assets/cases/ct-cat-head.png" alt="CT — head study in a cat" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">CT</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Head study</h3>
+            <span class="case-species">Cat</span>
+            <p>Thin-slice CT of the cranium and sinonasal, orbital and intracranial structures.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Dog · diaphragmatic pericardial hernia 3D -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">CT</span>
+            <img src="./assets/cases/ct-dog-pericardial-hernia-3d.png" alt="CT 3D reconstruction — diaphragmatic pericardial hernia in a dog" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">CT</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Diaphragmatic pericardial hernia (3D)</h3>
+            <span class="case-species">Dog</span>
+            <p>Volume-rendered 3D reconstruction delineating herniation of abdominal viscera into the pericardial sac.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Abdominal CT contrast-enhanced -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">CT</span>
+            <img src="./assets/cases/ct-abdominal-contrast.png" alt="CT — contrast-enhanced abdominal study" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">CT</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Abdominal study (contrast-enhanced)</h3>
+            <span class="case-species">Cat</span>
+            <p>Contrast-enhanced cross-sectional imaging of the abdominal organs.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Spine CT -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">CT</span>
+            <img src="./assets/cases/ct-spine.png" alt="CT — spinal study" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">CT</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Spine study</h3>
+            <span class="case-species">Dog</span>
+            <p>High-resolution imaging of the vertebral column and spinal canal.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Hedgehog · 3D reconstruction -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">CT</span>
+            <img src="./assets/cases/ct-hedgehog-3d.png" alt="CT 3D reconstruction — hedgehog" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">CT</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>3D reconstruction</h3>
+            <span class="case-species">Hedgehog</span>
+            <p>Volume-rendered 3D reconstruction of the hedgehog&rsquo;s skeletal and integumentary anatomy.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Turtle · lung CT 3D -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">CT</span>
+            <img src="./assets/cases/ct-turtle-lung-3d.png" alt="CT 3D reconstruction — lung study in a turtle" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">CT</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Lung study (3D reconstruction)</h3>
+            <span class="case-species">Turtle</span>
+            <p>3D reconstruction of pulmonary anatomy within the carapace.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Turtle · hepatic lipidosis -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">CT</span>
+            <img src="./assets/cases/ct-turtle-hepatic-lipidosis.png" alt="CT — hepatic lipidosis (fatty liver) in a turtle" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">CT</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Fatty liver (hepatic lipidosis)</h3>
+            <span class="case-species">Turtle</span>
+            <p>Diffuse low-attenuation of the hepatic parenchyma on transverse CT, consistent with hepatic lipidosis.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Cat · temporomandibular joint luxation -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">CT</span>
+            <img src="./assets/cases/ct-cat-tmj-luxation.png" alt="CT — temporomandibular joint luxation in a cat" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">CT</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Temporomandibular joint luxation</h3>
+            <span class="case-species">Cat</span>
+            <p>Transverse CT showing rostral luxation of the mandibular condyle with an empty glenoid fossa.</p>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ SAMPLE REPORT CTA ══════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="cta">
+        <h2>See a full sample report</h2>
+        <p>Request a complete sample report and we&rsquo;ll email it to you.</p>
+        <div class="cta-actions">
+          <a href="mailto:ldradiology5@163.com?subject=Sample%20report%20request" class="btn btn-on-inverse btn-lg">
+            Request a sample report
+            <svg class="arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ FOOTER ══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="./index.html" class="brand" aria-label="LUMORA home">
+            <img src="./assets/logo.png" alt="LUMORA" class="brand-logo" />
+          </a>
+          <p class="footer-tagline">Expert veterinary teleradiology — X-ray, CT and MRI interpretation by certified specialists.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="./index.html">Home</a>
+          <a href="./about.html">About us</a>
+          <a href="./x-ray.html">X-ray</a>
+          <a href="./ct.html">CT</a>
+          <a href="./mri.html">MRI</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:ldradiology5@163.com">ldradiology5@163.com</a>
+          <a href="https://wa.me/85251930140">WhatsApp +852-51930140</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 LUMORA · Veterinary Imaging Platform. All rights reserved.</p>
+        <p>X-Ray &middot; CT &middot; MRI &middot; Teleradiology</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('navToggle');
+      var menu = document.getElementById('mobileMenu');
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    })();
+  </script>
+
+</body>
+</html>

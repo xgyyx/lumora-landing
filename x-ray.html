@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>X-ray Sample Cases · LUMORA</title>
+  <meta name="description" content="Sample X-ray cases interpreted by LUMORA's certified veterinary imaging specialists — dogs, cats, rabbits, reptiles and birds." />
+
+  <link rel="stylesheet" href="./assets/site.css" />
+</head>
+
+<body>
+
+  <!-- ══════════════════════ NAV ══════════════════════ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="./index.html" class="brand" aria-label="LUMORA home">
+        <img src="./assets/logo.png" alt="LUMORA" class="brand-logo" />
+      </a>
+      <div class="nav-links">
+        <a href="./index.html" class="nav-link">Home</a>
+        <a href="./about.html" class="nav-link">About us</a>
+        <a href="./x-ray.html" class="nav-link active">X-ray</a>
+        <a href="./ct.html" class="nav-link">CT</a>
+        <a href="./mri.html" class="nav-link">MRI</a>
+        <a href="./contact.html" class="nav-link">Contact us</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="./index.html">Home</a>
+      <a href="./about.html">About us</a>
+      <a href="./x-ray.html" class="active">X-ray</a>
+      <a href="./ct.html">CT</a>
+      <a href="./mri.html">MRI</a>
+      <a href="./contact.html">Contact us</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════ PAGE HERO ══════════════════════ -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow eyebrow-accent">X-ray</span>
+      <h1>Sample X-ray cases</h1>
+      <p>
+        A selection of radiographic studies interpreted by our specialists — from routine
+        musculoskeletal to complex exotic cases.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ GALLERY ══════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="gallery">
+
+        <!-- Cat · diaphragmatic hernia -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">X-ray</span>
+            <img src="./assets/cases/xray-cat-diaphragmatic-hernia.png" alt="X-ray — diaphragmatic hernia in a cat" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">X-Ray</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Diaphragmatic hernia</h3>
+            <span class="case-species">Cat</span>
+            <p>Thoracic radiographs demonstrating displacement of abdominal viscera into the thoracic cavity.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Cat · mediastinal mass with pleural effusion -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">X-ray</span>
+            <img src="./assets/cases/xray-cat-mediastinal-mass.png" alt="X-ray — mediastinal mass with pleural effusion in a cat" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">X-Ray</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Mediastinal mass with pleural effusion</h3>
+            <span class="case-species">Cat</span>
+            <p>Mediastinal widening with concurrent pleural effusion on thoracic radiographs.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Rabbit · incisor overgrowth -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">X-ray</span>
+            <img src="./assets/cases/xray-rabbit-incisor-overgrowth.png" alt="X-ray — incisor overgrowth and malocclusion in a rabbit" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">X-Ray</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Incisor overgrowth &amp; malocclusion</h3>
+            <span class="case-species">Rabbit</span>
+            <p>Elongation and curvature of the incisor roots with secondary malocclusion.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Turtle · egg binding -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">X-ray</span>
+            <img src="./assets/cases/xray-turtle-egg-binding.png" alt="X-ray — egg binding in a turtle" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">X-Ray</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Egg binding</h3>
+            <span class="case-species">Turtle</span>
+            <p>Ventrodorsal projection showing retained eggs within the coelomic cavity.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Crested gecko · snow eggs -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">X-ray</span>
+            <img src="./assets/cases/xray-crested-gecko-snow-eggs.png" alt="X-ray — snow eggs and calcium sac not full in a crested gecko" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">X-Ray</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Snow eggs, calcium sac not full</h3>
+            <span class="case-species">Crested gecko</span>
+            <p>Study demonstrating egg retention with incompletely mineralized calcium sacs.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Giant gecko · hypocalcemia dystocia -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">X-ray</span>
+            <img src="./assets/cases/xray-giant-gecko-hypocalcemia.png" alt="X-ray — hypocalcemic dystocia in a giant gecko" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">X-Ray</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Hypocalcemic dystocia</h3>
+            <span class="case-species">Giant gecko</span>
+            <p>Coelomic study with focal findings consistent with hypocalcemia-related dystocia.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Snake · hemipenis calcification -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">X-ray</span>
+            <img src="./assets/cases/xray-snake-hemipenis-calcification.png" alt="X-ray — hemipenis calcification in a snake" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">X-Ray</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Hemipenis calcification</h3>
+            <span class="case-species">Snake</span>
+            <p>Radiographic evidence of dystrophic calcification in the hemipenis.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Snake · egg binding -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">X-ray</span>
+            <img src="./assets/cases/xray-snake-egg-binding.png" alt="X-ray — egg binding in a snake" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">X-Ray</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Egg binding</h3>
+            <span class="case-species">Snake</span>
+            <p>Whole-body study showing multiple retained eggs distributed along the coelomic cavity.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Bird · abdominal lateral -->
+        <figure class="case">
+          <div class="case-media">
+            <span class="modality-tag">X-ray</span>
+            <img src="./assets/cases/xray-bird-abdominal-lateral.png" alt="X-ray — abdominal lateral view in a bird" loading="lazy" onerror="this.style.display='none'">
+            <span class="dummy">X-Ray</span>
+          </div>
+          <figcaption class="case-body">
+            <h3>Abdominal lateral view</h3>
+            <span class="case-species">Bird</span>
+            <p>Lateral coelomic projection assessing abdominal organ silhouette and contour.</p>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ SAMPLE REPORT CTA ══════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="cta">
+        <h2>See a full sample report</h2>
+        <p>Request a complete sample report and we&rsquo;ll email it to you.</p>
+        <div class="cta-actions">
+          <a href="mailto:ldradiology5@163.com?subject=Sample%20report%20request" class="btn btn-on-inverse btn-lg">
+            Request a sample report
+            <svg class="arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ FOOTER ══════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="./index.html" class="brand" aria-label="LUMORA home">
+            <img src="./assets/logo.png" alt="LUMORA" class="brand-logo" />
+          </a>
+          <p class="footer-tagline">Expert veterinary teleradiology — X-ray, CT and MRI interpretation by certified specialists.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="./index.html">Home</a>
+          <a href="./about.html">About us</a>
+          <a href="./x-ray.html">X-ray</a>
+          <a href="./ct.html">CT</a>
+          <a href="./mri.html">MRI</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:ldradiology5@163.com">ldradiology5@163.com</a>
+          <a href="https://wa.me/85251930140">WhatsApp +852-51930140</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 LUMORA · Veterinary Imaging Platform. All rights reserved.</p>
+        <p>X-Ray &middot; CT &middot; MRI &middot; Teleradiology</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('navToggle');
+      var menu = document.getElementById('mobileMenu');
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    })();
+  </script>
+
+</body>
+</html>
