@@ -157,10 +157,13 @@ img { max-width: 100%; display: block; }
 @media (min-width: 768px)  { .section { padding: var(--space-5xl) 0; } }
 @media (min-width: 1024px) { .section { padding: var(--space-6xl) 0; } }
 
-.section-muted {
+/* Tinted band — shared by the alternating (tint ↔ white) section rhythm */
+.section-muted,
+.stats-band {
   background:
-    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(50, 121, 249, 0.05) 0%, transparent 60%),
-    linear-gradient(180deg, var(--surface-container-low) 0%, #f5f7fc 100%);
+    radial-gradient(ellipse 72% 90% at 50% 0%, rgba(50, 121, 249, 0.10) 0%, transparent 62%),
+    linear-gradient(180deg, #e9effb 0%, #f5f8fd 100%);
+  color: var(--on-surface);
 }
 
 /* ─── Nav ───────────────────────────────────────────────────────────── */
@@ -515,12 +518,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ─── Stats band (Practice Snapshot) ────────────────────────────────── */
-.stats-band {
-  background:
-    radial-gradient(ellipse 60% 90% at 50% 0%, rgba(50,121,249,0.18) 0%, transparent 62%),
-    linear-gradient(180deg, var(--navy-800) 0%, var(--navy-900) 100%);
-  color: var(--on-inverse);
-}
+/* Background comes from the shared tinted-band rule above. */
 .stats-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); }
 @media (min-width: 640px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -529,11 +527,11 @@ img { max-width: 100%; display: block; }
   font-size: clamp(var(--text-3xl), 4.5vw, 52px);
   font-weight: var(--weight-title);
   letter-spacing: -0.02em;
-  color: var(--on-inverse);
+  color: var(--navy-900);
   line-height: 1;
 }
-.stat-value .unit { font-size: var(--text-lg); font-weight: var(--weight-medium); margin-left: 4px; color: var(--on-inverse-variant); }
-.stat-label { margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--on-inverse-variant); line-height: 1.45; }
+.stat-value .unit { font-size: var(--text-lg); font-weight: var(--weight-medium); margin-left: 4px; color: var(--primary); }
+.stat-label { margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--on-surface-variant); line-height: 1.45; }
 
 /* ─── Species grid ──────────────────────────────────────────────────── */
 .species-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); }
