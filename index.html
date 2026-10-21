@@ -31,7 +31,12 @@
         <a href="./x-ray.html" class="nav-link">X-ray</a>
         <a href="./ct.html" class="nav-link">CT</a>
         <a href="./mri.html" class="nav-link">MRI</a>
-        <a href="./contact.html" class="nav-link">Contact us</a>
+        <a href="./contact.html" class="nav-cta">
+          Book a call
+          <svg class="arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,44 +56,51 @@
 
   <!-- ══════════════════════ HERO ══════════════════════ -->
   <section class="hero">
-    <div class="hero-bokeh" aria-hidden="true">
-      <span style="--x:10%;--y:78%;--s:6px;--d:8s;--delay:0s;--o:.65"></span>
-      <span style="--x:20%;--y:88%;--s:9px;--d:11s;--delay:1.2s;--o:.7"></span>
-      <span style="--x:26%;--y:58%;--s:5px;--d:7s;--delay:.6s;--o:.55"></span>
-      <span style="--x:14%;--y:46%;--s:8px;--d:9.5s;--delay:2s;--o:.6"></span>
-      <span style="--x:7%;--y:62%;--s:4px;--d:6s;--delay:.9s;--o:.5"></span>
-      <span style="--x:30%;--y:72%;--s:6px;--d:8.5s;--delay:1.6s;--o:.6"></span>
-      <span style="--x:18%;--y:34%;--s:5px;--d:10s;--delay:2.6s;--o:.55"></span>
-      <span style="--x:62%;--y:82%;--s:7px;--d:9s;--delay:.4s;--o:.65"></span>
-      <span style="--x:74%;--y:58%;--s:9px;--d:11s;--delay:1s;--o:.7"></span>
-      <span style="--x:82%;--y:70%;--s:5px;--d:7.5s;--delay:1.8s;--o:.55"></span>
-      <span style="--x:90%;--y:46%;--s:7px;--d:8.5s;--delay:.8s;--o:.6"></span>
-      <span style="--x:68%;--y:38%;--s:5px;--d:10s;--delay:2.2s;--o:.55"></span>
-      <span style="--x:86%;--y:88%;--s:6px;--d:9.5s;--delay:1.4s;--o:.6"></span>
-      <span style="--x:58%;--y:62%;--s:4px;--d:6.5s;--delay:2.8s;--o:.5"></span>
-    </div>
     <div class="container">
-      <div class="hero-inner">
-        <span class="eyebrow eyebrow-accent">Lumora &middot; Veterinary Imaging Platform</span>
-        <h1>See Beyond the Image.</h1>
-        <p class="hero-sub" style="font-style: italic;">
-          Expert Insight. Better-informed Decisions.
-        </p>
-        <p class="hero-sub">
-          Subspecialty interpretation of radiographs, CT and MRI studies for companion and exotic species
-        </p>
-        <div class="hero-cta">
-          <a href="./contact.html" class="btn btn-accent btn-lg">
-            Explore Our Services
-            <svg class="arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-            </svg>
-          </a>
+      <div class="hero-grid">
+        <div class="hero-inner">
+          <span class="eyebrow">Lumora &middot; Veterinary Imaging Platform</span>
+          <h1>See beyond the image.</h1>
+          <p class="hero-sub hero-sub--lead">Expert insight. Better-informed decisions.</p>
+          <p class="hero-sub">
+            Subspecialty interpretation of radiographs, CT and MRI studies for companion and exotic species.
+          </p>
+          <div class="hero-cta">
+            <a href="./contact.html" class="btn btn-accent btn-lg">
+              Explore our services
+              <svg class="arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+            </a>
+            <a href="./about.html" class="btn btn-outlined-inverse btn-lg">About LUMORA</a>
+          </div>
+          <p class="hero-note"><span class="dot"></span>X-Ray &middot; CT &middot; MRI &middot; Teleradiology</p>
         </div>
-        <p class="hero-note"><span class="dot"></span>X-Ray &middot; CT &middot; MRI &middot; Teleradiology</p>
+
+        <div class="hero-visual" aria-hidden="true">
+          <figure class="hero-frame">
+            <img src="./assets/cases/mri-dog-brain-tumor.png" alt="" loading="eager" />
+            <figcaption>MRI &middot; Brain tumor <span>Canine</span></figcaption>
+          </figure>
+          <div class="hero-float">
+            <img src="./assets/cases/ct-hedgehog-3d.png" alt="" loading="lazy" />
+            <div>
+              <span class="hero-float-label">CT &middot; 3D reconstruction</span>
+              <strong>Report delivered in 48h</strong>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- ══════════════════════ MARQUEE ══════════════════════ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>X-Ray <i>&#10022;</i> CT <i>&#10022;</i> MRI <i>&#10022;</i> Exotic Species <i>&#10022;</i> Teleradiology <i>&#10022;</i> Structured Reports <i>&#10022;</i></span>
+      <span>X-Ray <i>&#10022;</i> CT <i>&#10022;</i> MRI <i>&#10022;</i> Exotic Species <i>&#10022;</i> Teleradiology <i>&#10022;</i> Structured Reports <i>&#10022;</i></span>
+    </div>
+  </div>
 
   <!-- ══════════════════════ PRACTICE SNAPSHOT ══════════════════════ -->
   <section class="section stats-band">
@@ -136,6 +148,7 @@
         <div class="card modality-card">
           <img class="modality-bg" src="./assets/cases/xray-cat-diaphragmatic-hernia.png" alt="X-ray sample — diaphragmatic hernia in a cat" loading="lazy" onerror="this.style.display='none'">
           <div class="modality-overlay" aria-hidden="true"></div>
+          <span class="modality-index">01 / X-Ray</span>
           <div class="modality-content">
             <h3>X-ray</h3>
             <a href="./x-ray.html" class="btn btn-on-inverse">
@@ -149,6 +162,7 @@
         <div class="card modality-card">
           <img class="modality-bg" src="./assets/cases/ct-hedgehog-3d.png" alt="CT sample — 3D reconstruction of a hedgehog" loading="lazy" onerror="this.style.display='none'">
           <div class="modality-overlay" aria-hidden="true"></div>
+          <span class="modality-index">02 / CT</span>
           <div class="modality-content">
             <h3>CT</h3>
             <a href="./ct.html" class="btn btn-on-inverse">
@@ -162,6 +176,7 @@
         <div class="card modality-card">
           <img class="modality-bg" src="./assets/cases/mri-dog-brain-tumor.png" alt="MRI sample — brain tumor in a dog" loading="lazy" onerror="this.style.display='none'">
           <div class="modality-overlay" aria-hidden="true"></div>
+          <span class="modality-index">03 / MRI</span>
           <div class="modality-content">
             <h3>MRI</h3>
             <a href="./mri.html" class="btn btn-on-inverse">
@@ -274,16 +289,7 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      var btn = document.getElementById('navToggle');
-      var menu = document.getElementById('mobileMenu');
-      btn.addEventListener('click', function () {
-        var open = menu.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    })();
-  </script>
+  <script src="./assets/site.js" defer></script>
 
 </body>
 </html>
